@@ -1,0 +1,22 @@
+set hlsearch
+set visualbell
+set noerrorbells
+set ignorecase smartcase
+set showmode
+set surround
+nnoremap <space>u :action FindUsages<cr>
+nnoremap <space>k :action HighlightUsagesInFile<cr>
+nnoremap <space>j :action EditorCompleteStatement<cr>
+nnoremap <space>w :action SaveDocument<cr>
+nnoremap <space>; :action RecentFiles<cr>
+nnoremap <space>f :action GotoFile<cr>
+nnoremap <space>s :action GotoSymbol<cr>
+nnoremap <space>' ct'
+nnoremap <space>" ct"
+nnoremap <space>- ct-
+nnoremap <space>_ ct_
+inoremap <C-j> <Esc>
+" built in search looks better
+nnoremap / :action Find<cr>
+" but preserve ideavim search
+nnoremap g/ /

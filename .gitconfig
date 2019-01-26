@@ -1,0 +1,24 @@
+[user]
+    name = onatm
+    email = onatmercan@gmail.com
+[core]
+    commentchar = $
+    preloadindex = true
+    fscache = true
+    autocrlf = input
+    safecrlf = true
+    editor = vim
+[fetch]
+    prune = true
+[rebase]
+    autosquash = true
+[push]
+    default = simple
+[merge]
+    tool = vimdiff
+[alias]
+    st = status
+    co = checkout
+    pr = pull --rebase
+    tail = commit --amend --no-edit
+    graph = log --decorate --oneline --graph
