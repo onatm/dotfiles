@@ -66,7 +66,7 @@ let g:deoplete#enable_smart_case = 1
 let g:deoplete#deoplete_omni_patterns = get(g:, 'deoplete#force_omni_input_patterns', {})
 
 let g:LanguageClient_serverCommands = {
-                 \ 'rust': ['rustup', 'run', 'nightly', 'rls'],
+                 \ 'rust': ['rustup', 'run', 'stable', 'rls'],
                  \ }
 let g:rustfmt_autosave = 1
 let g:ale_sign_column_always = 1
