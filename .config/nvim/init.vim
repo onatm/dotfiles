@@ -52,13 +52,13 @@ vmap <C-c> <C-Ins>
 map <leader>n :nohl<cr>
 map <leader>p "*p
 nnoremap <leader>; :Buffers<cr>
-nnoremap <C-T> :Files<cr>
-nnoremap <F5> :call LanguageClient_contextMenu()<CR>
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> R :call LanguageClient_textDocument_references()<CR>
+nnoremap <leader>f :Files<cr>
+nnoremap <leader>k :call LanguageClient_textDocument_hover()<CR>
+nnoremap <leader>r :call LanguageClient_textDocument_references()<CR>
+nnoremap <leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
 nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
 nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-nnoremap <leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
+nnoremap <F5> :call LanguageClient_contextMenu()<CR>
 imap jj <esc>
 
 let g:deoplete#enable_at_startup = 1
