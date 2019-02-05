@@ -18,7 +18,7 @@
     "statusBar.debuggingBackground": "#005f5f"
   },
   "terminal.integrated.shell.linux": "/usr/bin/fish",
-  "terminal.integrated.shell.osx": "/usr/bin/fish",
+  "terminal.integrated.shell.osx": "fish",
   "git.enableSmartCommit": true,
   "window.zoomLevel": 0,
   "vim.statusBarColorControl": true,
