@@ -22,3 +22,4 @@
     pr = pull --rebase
     tail = commit --amend --no-edit
     graph = log --decorate --oneline --graph
+    sf = show --pretty="" --name-only
