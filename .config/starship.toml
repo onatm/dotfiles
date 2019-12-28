@@ -1,0 +1,12 @@
+# add_newline = false
+
+[character]
+symbol = "➜"
+
+[kubernetes]
+symbol = "⛵ "
+style = "dim green"
+disabled = false
+
+[aws]
+disabled = true
