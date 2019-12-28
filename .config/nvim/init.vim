@@ -48,7 +48,7 @@ call plug#end()
 
 let base16colorspace=256
 set background=dark
-colorscheme base16-nord
+colorscheme base16-gruvbox-dark-hard
 set termguicolors
 
 syntax on
