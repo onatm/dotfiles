@@ -1,5 +1,5 @@
 # Default aliases
-alias ll='ls -l'
+alias ll='ls -aAl'
 alias gg='git graph'
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
