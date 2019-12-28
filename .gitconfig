@@ -1,13 +1,15 @@
 [user]
     name = onatm
     email = onatmercan@gmail.com
+	signingkey = D98AA098CC159C89
 [core]
     commentchar = $
     preloadindex = true
     fscache = true
     autocrlf = input
     safecrlf = true
-    editor = vim
+    editor = nvim
+	excludesfile = $HOME/.gitignore_global
 [fetch]
     prune = true
 [rebase]
