@@ -44,7 +44,7 @@ window:
   decorations: full
 
   # When true, alacritty starts maximized.
-  start_maximized: false
+  start_mode: Windowed
 
 scrolling:
   # Maximum number of lines in the scrollback buffer.
@@ -80,24 +80,24 @@ tabspaces: 8
 font:
   # The normal (roman) font face to use.
   normal:
-    family: "Noto Mono" # should be "Menlo" or something on macOS.
+    family: "Droid Sans Mono Slashed for Powerline" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
-    # style: Regular
+    style: Regular
 
   # The bold font face
   bold:
-    family: "Noto Mono" # should be "Menlo" or something on macOS.
+    family: "Droid Sans Mono Slashed for Powerline" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Bold
 
   # The italic font face
   italic:
-    family: "Noto Mono" # should be "Menlo" or something on macOS.
+    family: "Droid Sans Mono Slashed for Powerline" # should be "Menlo" or something on macOS.
     # Style can be specified to pick a specific face.
     # style: Italic
 
   # Point size
-  size: 12.0
+  size: 14.0
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
@@ -128,11 +128,29 @@ font:
   # effect.
   use_thin_strokes: true
 
-# Display the time it takes to redraw each frame.
-render_timer: false
+debug:
+  # Display the time it takes to redraw each frame.
+  render_timer: false
 
-# Keep the log file after quitting Alacritty.
-persistent_logging: false
+  # Keep the log file after quitting Alacritty.
+  persistent_logging: false
+
+  # Log level
+  #
+  # Values for `log_level`:
+  #   - None
+  #   - Error
+  #   - Warn
+  #   - Info
+  #   - Debug
+  #   - Trace
+  log_level: Warn
+
+  # Print all received window events.
+  print_events: false
+
+  # Record all characters and escape sequences as test data.
+  ref_test: false
 
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
@@ -319,10 +337,10 @@ live_config_reload: true
 # Default:
 #   - (Linux/macOS) /bin/bash --login
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+    program: /usr/local/bin/tmux
+    args:
+     - -u # force UTF-8 in tmux
 
 # Windows 10 ConPTY backend (Windows only)
 #
@@ -443,6 +461,10 @@ key_bindings:
   #- { key: H,        mods: Command, action: Hide                         }
   #- { key: Q,        mods: Command, action: Quit                         }
   #- { key: W,        mods: Command, action: Quit                         }
+
+  # fish
+  - { key: E,        mods: Alt,     chars: "\x1be"                       }
+  - { key: V,        mods: Alt,     chars: "\x1bv"                       }
 
   - { key: Paste,                   action: Paste                        }
   - { key: Copy,                    action: Copy                         }
