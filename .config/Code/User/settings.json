@@ -1,26 +1,32 @@
 {
   "telemetry.enableTelemetry": false,
-  "workbench.startupEditor": "newUntitledFile",
   "extensions.ignoreRecommendations": false,
+  "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "vs-nomo-dark",
-  "workbench.colorTheme": "One Dark Pro Bold",
-  "npm.enableScriptExplorer": true,
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
-  "editor.formatOnSave": true,
-  "editor.insertSpaces": true,
-  "editor.tabSize": 2,
-  "editor.renderWhitespace": "boundary",
-  "editor.renderIndentGuides": true,
-  "editor.codeLens": true,
+  "workbench.colorTheme": "Nord",
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
     "statusBar.debuggingBackground": "#005f5f"
   },
+  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.tabSize": 2,
+  "editor.fontSize": 14,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderIndentGuides": true,
+  "editor.codeLens": true,
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
   "terminal.integrated.shell.linux": "/usr/bin/fish",
-  "terminal.integrated.shell.osx": "fish",
+  "terminal.integrated.shell.osx": "/usr/local/bin/fish",
+  "terminal.integrated.fontSize": 14,
   "git.enableSmartCommit": true,
   "window.zoomLevel": 0,
+  "npm.enableScriptExplorer": true,
   "vim.statusBarColorControl": true,
   "vim.easymotion": true,
   "vim.sneak": true,
@@ -30,18 +36,36 @@
   "vim.hlsearch": true,
   "vim.insertModeKeyBindings": [
     {
-      "before": ["j", "j"],
-      "after": ["<Esc>"]
+      "before": [
+        "j",
+        "j"
+      ],
+      "after": [
+        "<Esc>"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
-      "before": ["<leader>", "d"],
-      "after": ["d", "d"]
+      "before": [
+        "<leader>",
+        "n"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
     {
-      "before": ["<leader>", "n"],
-      "commands": [":nohl"]
+      "before": [
+        "<leader>",
+        "p"
+      ],
+      "after": [
+        "v",
+        "i",
+        "w",
+        "p"
+      ]
     }
   ],
   "vim.leader": "<space>",
@@ -49,6 +73,7 @@
     "<C-a>": false,
     "<C-f>": false
   },
+  "typescript.format.enable": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
   "[typescript]": {
     "editor.codeActionsOnSave": {
@@ -60,7 +85,16 @@
       "source.organizeImports": false
     }
   },
-  "tslint.autoFixOnSave": true,
-  "tslint.alwaysShowStatus": true,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "eslint.alwaysShowStatus": true,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
+  "go.useLanguageServer": true,
+  "vs-kubernetes": {
+    "vs-kubernetes.kubectl-path": "/Users/onat.mercan/.vs-kubernetes/tools/kubectl/kubectl",
+    "vs-kubernetes.minikube-path": "/Users/onat.mercan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
+    "vs-kubernetes.helm-path": "/Users/onat.mercan/.vs-kubernetes/tools/helm/darwin-amd64/helm",
+    "vs-kubernetes.draft-path": "/Users/onat.mercan/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+  },
+  "editor.wordWrap": "on",
 }
