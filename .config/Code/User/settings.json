@@ -3,7 +3,7 @@
   "extensions.ignoreRecommendations": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "vs-nomo-dark",
-  "workbench.colorTheme": "Nord",
+  "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
