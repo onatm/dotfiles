@@ -35,7 +35,7 @@ call plug#begin('~/.local/share/nvim/plugged')
  Plug 'airblade/vim-rooter'
  Plug 'junegunn/fzf'
  Plug 'junegunn/fzf.vim'
- Plug 'scrooloose/nerdtree'
+ Plug 'preservim/nerdtree'
  Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
     \ 'do': 'bash install.sh',
@@ -75,6 +75,7 @@ nnoremap <silent> k kzz
 nnoremap <leader>a :cclose<CR>
 nnoremap <leader>; :Buffers<cr>
 nnoremap <leader>f :Files<cr>
+nnoremap <leader>t :NERDTreeToggle<CR>
 nnoremap <leader>k :call LanguageClient_textDocument_hover()<CR>
 nnoremap <leader>r :call LanguageClient_textDocument_references()<CR>
 nnoremap <leader>s :call LanguageClient_textDocument_documentSymbol()<CR>
