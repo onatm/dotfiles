@@ -1,144 +1,150 @@
-;==========================================================
-;
-;
-;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
-;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
-;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
-;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
-;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
-;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
-;
-;
-;   To learn more about how to configure Polybar
-;   go to https://github.com/jaagr/polybar
-;
-;   The README contains alot of information
-;
-;==========================================================
-
 [colors]
-background = #222
-background-alt = #444
-foreground = #dfdfdf
-foreground-alt = #888
-primary = #ffb52a
-secondary = #e60053
-alert = #bd2c40
+background = #16181E
+foreground = #E7ECEF
+blue = #5294E2
+purple = #9b5de5
+yellow = #ffaa5a
+green = #02c39a
+red = #FF686B
+pink = #ef476f
+brown = b4896e
 
-[bar/main]
-monitor = ${env:MONITOR:eDP-1}
+[bar/mybar]
+bottom = false
+fixed-center = true
 width = 100%
-height = 2.5%
-radius = 6.0
-fixed-center = false
-bottom = true
-
+height = 20
 background = ${colors.background}
 foreground = ${colors.foreground}
+radius = 0.0
+line-size = 0
+line-color = #f00
 
-border-size = 0
-line-size = 2
-padding = 1
-module-margin = 1
+; Number of spaces to add at the beginning/end of the bar
+padding = 0
 
-font-0 = "Noto Mono:size=10;1"
-font-1 = "Noto Sans Mono:size=10;1"
-font-2 = "Noto Sans Symbols:size=10;1"
-font-3 = "Noto Sans Symbols2:size=10;1"
+; Number of spaces to add before/after each module
+module-margin = 2
 
-modules-left = date ewmh xwindow
-modules-center =
-modules-right = github eth wlan cpu battery
+; Fonts are defined using <font-name>;<vertical-offset>
+font-0 = Ubuntu:style=Bold:pixelsize=10;2
+font-1 = Font Awesome 5 Free Solid:style=Solid:size=9;2
+font-2 = Font Awesome 5 Free Regular:style=Regular:size=9;2
+font-3 = Font Awesome 5 Brands Regular:style=Regular:size=9;2
 
+; Modules are added to one of the available blocks
+modules-left = i3
+modules-center = xwindow wired-network
+modules-right = networkspeeddown pacman-updates battery wireless-network date 
+
+;separator =
+; This value is used to add extra spacing between elements
+; @deprecated: This parameter will be removed in an upcoming version
+spacing = 0
+; Opacity value between 0.0 and 1.0 used on fade in/out
+dim-value = 1.0
+
+; Position of the system tray window
 tray-position = right
-tray-padding = 2
-tray-maxsize = 24
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+
+; Pad the sides of each tray icon
+tray-padding = 0
 
 [global/wm]
+margin-bottom = 0
 margin-top = 0
+
+[settings]
+
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = true
+
+[module/i3]
+type = internal/i3
+
+; Default: false
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+index-sort = false
+
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;  terminal
+ws-icon-1 = 2;龜  firefox
+ws-icon-2 = 3;  code
+ws-icon-3 = 4;  files
+ws-icon-4 = 5;  music
+ws-icon-5 = 6;  movie
+ws-icon-6 = 7;  extra
+
+label-mode = %mode%
+label-mode-padding = 4
+label-mode-foreground = #000
+label-mode-background = ${colors.green}
+
+label-focused = %icon%
+label-focused-background = ${colors.green}
+label-focused-padding = 4
+
+label-unfocused = %icon% 
+label-unfocused-padding = 4
+
+label-visible = %icon% 
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %icon% 
+label-urgent-background = ${colors.red}
+label-urgent-padding = 4
 
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:30:...%
+format = <label>
+label = %title%
+format-foreground = ${colors.foreground}
+format-background = ${colors.blue}
+label-maxlen = 25
+format-padding = 4
 
-[module/ewmh]
-type = internal/xworkspaces
-pin-workspaces = false
-enable-click = false
-enable-scroll = false
-
-label-active = " %name% "
-label-active-underline = #fba922
-
-label-occupied = " %name% "
-label-occupied-foreground = #ffaa00
-
-label-urgent = " %name% "
-label-urgent-underline = #9b0a20
-
-label-empty = " %name% "
-label-empty-foreground = #555555
-
-[module/cpu]
-type = internal/cpu
-interval = 2
-format-prefix = "💻 "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #f90000
-label = %percentage:2%%
-
-[module/memory]
-type = internal/memory
-interval = 2
-format-prefix = "🗍 "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #4bffdc
-label = %percentage_used:2%%
-
-[module/wlan]
-type = internal/network
-interface = wlp4s0
-interval = 5.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
-
-label-disconnected =
-
-ramp-signal-0 = 🌧
-ramp-signal-1 = 🌦
-ramp-signal-2 = 🌥
-ramp-signal-3 = 🌤
-ramp-signal-4 = 🌣
-
-[module/eth]
-type = internal/network
-interface = enp0s25
-interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = "🖧 "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
-
-format-disconnected =
+[module/pacman-updates]
+type = custom/script
+exec = pacman -Qu | wc -l
+interval = 1000
+label = %output%
+format-prefix = 
+format-background = ${colors.yellow}
+format-prefix-padding-right = 2
+format-padding = 4
 
 [module/date]
 type = internal/date
 interval = 5
-
-date = "%a %d"
-date-alt = %a %b %d
-
-time = %I:%M
-time-alt = %I:%M%p
-
-format-prefix =
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
+time = %H:%M
+format-prefix = 
+label = %time%
+format-background = ${colors.red}
+format-padding = 4
+label-padding-left = 2
 
 [module/battery]
 type = internal/battery
@@ -146,34 +152,573 @@ battery = BAT0
 adapter = AC
 full-at = 98
 
-format-charging = <label-charging>
-format-charging-underline = #ffb52a
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging-background = ${colors.brown}
+label-charging-background = ${colors.brown}
+label-full-background = ${colors.brown}
+label-discharging-padding-right = 4
+label-discharging-padding-left = 2
+label-charging-padding-right = 4
+label-charging-padding-left = 2
 
-format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-full-prefix = 
+format-full-prefix-background = ${colors.brown}
+format-full-prefix-padding-right = 2
+format-full-prefix-padding-left = 4
+label-full = "100%   "
 
-format-full = <label-full>
-format-full-underline = ${self.format-charging-underline}
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-background = ${colors.brown}
+ramp-capacity-padding-left = 4
 
-ramp-capacity-0 = ⚋
-ramp-capacity-1 = ⚊
-ramp-capacity-2 = ⚍
-ramp-capacity-3 = ⚌
-ramp-capacity-foreground = ${colors.foreground-alt}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-charging-background = ${colors.brown}
+animation-charging-padding-left = 4
 
-label-charging = ⚡ %percentage%%
-label-discharging = %percentage%%
-label-full = " ☀ "
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+interval = 3.0
 
-[module/github]
-type = internal/github
-token = ${file:/home/jon/.config/github/notifications.token}
-empty-notifications = false
-;label = %{u#ff9900 +u} %notifications% %{u-}
-label = %{u#0099ff +u} 📫 %{u-}
-interval = 10
+unknown-as-up = true
+accumulate-stats = true
+
+format-connected = <ramp-signal> <label-connected>
+label-connected =   %downspeed:7%
+label-connected-padding = 4
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.purple}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close = 
+label-close-foreground = ${colors.foreground}
+
+
+menu-0-0 = 
+menu-0-0-exec = systemctl reboot
+menu-0-1 = 
+menu-0-1-exec = systemctl poweroff
+menu-0-2 = 
+menu-0-2-exec = systemctl suspend
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+format-online = <label-song>
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb =  
+icon-seekf = 
+
+label-song-maxlen = 30
+label-song-ellipsis = true[colors]
+background = #16181E
+foreground = #E7ECEF
+blue = #5294E2
+purple = #9b5de5
+yellow = #ffaa5a
+green = #02c39a
+red = #FF686B
+pink = #ef476f
+brown = b4896e
+
+[bar/mybar]
+bottom = false
+fixed-center = true
+width = 100%
+height = 20
+background = ${colors.background}
+foreground = ${colors.foreground}
+radius = 0.0
+line-size = 0
+line-color = #f00
+
+; Number of spaces to add at the beginning/end of the bar
+padding = 0
+
+; Number of spaces to add before/after each module
+module-margin = 2
+
+; Fonts are defined using <font-name>;<vertical-offset>
+font-0 = Ubuntu:style=Bold:pixelsize=10;2
+font-1 = Font Awesome 5 Free Solid:style=Solid:size=9;2
+font-2 = Font Awesome 5 Free Regular:style=Regular:size=9;2
+font-3 = Font Awesome 5 Brands Regular:style=Regular:size=9;2
+
+; Modules are added to one of the available blocks
+modules-left = i3
+modules-center = xwindow wired-network
+modules-right = networkspeeddown pacman-updates battery wireless-network date 
+
+;separator =
+; This value is used to add extra spacing between elements
+; @deprecated: This parameter will be removed in an upcoming version
+spacing = 0
+; Opacity value between 0.0 and 1.0 used on fade in/out
+dim-value = 1.0
+
+; Position of the system tray window
+tray-position = right
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+
+; Pad the sides of each tray icon
+tray-padding = 0
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
 
 [settings]
+
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
 screenchange-reload = true
 
-; vim:ft=dosini
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = true
+
+[module/i3]
+type = internal/i3
+
+; Default: false
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+index-sort = false
+
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;  terminal
+ws-icon-1 = 2;龜  firefox
+ws-icon-2 = 3;  code
+ws-icon-3 = 4;  files
+ws-icon-4 = 5;  music
+ws-icon-5 = 6;  movie
+ws-icon-6 = 7;  extra
+
+label-mode = %mode%
+label-mode-padding = 4
+label-mode-foreground = #000
+label-mode-background = ${colors.green}
+
+label-focused = %icon%
+label-focused-background = ${colors.green}
+label-focused-padding = 4
+
+label-unfocused = %icon% 
+label-unfocused-padding = 4
+
+label-visible = %icon% 
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %icon% 
+label-urgent-background = ${colors.red}
+label-urgent-padding = 4
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+label = %title%
+format-foreground = ${colors.foreground}
+format-background = ${colors.blue}
+label-maxlen = 25
+format-padding = 4
+
+[module/pacman-updates]
+type = custom/script
+exec = pacman -Qu | wc -l
+interval = 1000
+label = %output%
+format-prefix = 
+format-background = ${colors.yellow}
+format-prefix-padding-right = 2
+format-padding = 4
+
+[module/date]
+type = internal/date
+interval = 5
+time = %H:%M
+format-prefix = 
+label = %time%
+format-background = ${colors.red}
+format-padding = 4
+label-padding-left = 2
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging-background = ${colors.brown}
+label-charging-background = ${colors.brown}
+label-full-background = ${colors.brown}
+label-discharging-padding-right = 4
+label-discharging-padding-left = 2
+label-charging-padding-right = 4
+label-charging-padding-left = 2
+
+format-full-prefix = 
+format-full-prefix-background = ${colors.brown}
+format-full-prefix-padding-right = 2
+format-full-prefix-padding-left = 4
+label-full = "100%   "
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-background = ${colors.brown}
+ramp-capacity-padding-left = 4
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-charging-background = ${colors.brown}
+animation-charging-padding-left = 4
+
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+unknown-as-up = true
+accumulate-stats = true
+
+format-connected = <ramp-signal> <label-connected>
+label-connected =   %downspeed:7%
+label-connected-padding = 4
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.purple}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close = 
+label-close-foreground = ${colors.foreground}
+
+
+menu-0-0 = 
+menu-0-0-exec = systemctl reboot
+menu-0-1 = 
+menu-0-1-exec = systemctl poweroff
+menu-0-2 = 
+menu-0-2-exec = systemctl suspend
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+format-online = <label-song>
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb =  
+icon-seekf = 
+
+label-song-maxlen = 30
+label-song-ellipsis = true[colors]
+background = #16181E
+foreground = #E7ECEF
+blue = #5294E2
+purple = #9b5de5
+yellow = #ffaa5a
+green = #02c39a
+red = #FF686B
+pink = #ef476f
+brown = b4896e
+
+[bar/mybar]
+bottom = false
+fixed-center = true
+width = 100%
+height = 20
+background = ${colors.background}
+foreground = ${colors.foreground}
+radius = 0.0
+line-size = 0
+line-color = #f00
+
+; Number of spaces to add at the beginning/end of the bar
+padding = 0
+
+; Number of spaces to add before/after each module
+module-margin = 2
+
+; Fonts are defined using <font-name>;<vertical-offset>
+font-0 = Ubuntu:style=Bold:pixelsize=10;2
+font-1 = Font Awesome 5 Free Solid:style=Solid:size=9;2
+font-2 = Font Awesome 5 Free Regular:style=Regular:size=9;2
+font-3 = Font Awesome 5 Brands Regular:style=Regular:size=9;2
+
+; Modules are added to one of the available blocks
+modules-left = i3
+modules-center = xwindow wired-network
+modules-right = networkspeeddown pacman-updates battery wireless-network date 
+
+;separator =
+; This value is used to add extra spacing between elements
+; @deprecated: This parameter will be removed in an upcoming version
+spacing = 0
+; Opacity value between 0.0 and 1.0 used on fade in/out
+dim-value = 1.0
+
+; Position of the system tray window
+tray-position = right
+tray-detached = false
+tray-maxsize = 20
+tray-background = ${colors.background}
+tray-offset-x = 0
+tray-offset-y = 0
+
+; Pad the sides of each tray icon
+tray-padding = 0
+
+[global/wm]
+margin-bottom = 0
+margin-top = 0
+
+[settings]
+
+throttle-output = 5
+throttle-output-for = 10
+
+; Time in milliseconds that the input handler will wait between processing events
+throttle-input-for = 30
+
+; Reload upon receiving XCB_RANDR_SCREEN_CHANGE_NOTIFY events
+screenchange-reload = true
+
+; Enables pseudo-transparency for the bar
+; If set to true the bar can be transparent without a compositor.
+pseudo-transparency = true
+
+[module/i3]
+type = internal/i3
+
+; Default: false
+; This will split the workspace name on ':'
+; Default: false
+strip-wsnumbers = true
+
+; Wrap around when reaching the first/last workspace
+; Default: true
+wrapping-scroll = false
+index-sort = false
+
+format = <label-state> <label-mode>
+
+ws-icon-0 = 1;  terminal
+ws-icon-1 = 2;龜  firefox
+ws-icon-2 = 3;  code
+ws-icon-3 = 4;  files
+ws-icon-4 = 5;  music
+ws-icon-5 = 6;  movie
+ws-icon-6 = 7;  extra
+
+label-mode = %mode%
+label-mode-padding = 4
+label-mode-foreground = #000
+label-mode-background = ${colors.green}
+
+label-focused = %icon%
+label-focused-background = ${colors.green}
+label-focused-padding = 4
+
+label-unfocused = %icon% 
+label-unfocused-padding = 4
+
+label-visible = %icon% 
+label-visible-background = ${self.label-focused-background}
+label-visible-padding = ${self.label-focused-padding}
+
+label-urgent = %icon% 
+label-urgent-background = ${colors.red}
+label-urgent-padding = 4
+
+[module/xwindow]
+type = internal/xwindow
+format = <label>
+label = %title%
+format-foreground = ${colors.foreground}
+format-background = ${colors.blue}
+label-maxlen = 25
+format-padding = 4
+
+[module/pacman-updates]
+type = custom/script
+exec = pacman -Qu | wc -l
+interval = 1000
+label = %output%
+format-prefix = 
+format-background = ${colors.yellow}
+format-prefix-padding-right = 2
+format-padding = 4
+
+[module/date]
+type = internal/date
+interval = 5
+time = %H:%M
+format-prefix = 
+label = %time%
+format-background = ${colors.red}
+format-padding = 4
+label-padding-left = 2
+
+[module/battery]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+
+format-charging = <animation-charging><label-charging>
+format-discharging = <ramp-capacity><label-discharging>
+label-discharging-background = ${colors.brown}
+label-charging-background = ${colors.brown}
+label-full-background = ${colors.brown}
+label-discharging-padding-right = 4
+label-discharging-padding-left = 2
+label-charging-padding-right = 4
+label-charging-padding-left = 2
+
+format-full-prefix = 
+format-full-prefix-background = ${colors.brown}
+format-full-prefix-padding-right = 2
+format-full-prefix-padding-left = 4
+label-full = "100%   "
+
+ramp-capacity-0 = 
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-4 = 
+ramp-capacity-background = ${colors.brown}
+ramp-capacity-padding-left = 4
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-framerate = 750
+animation-charging-background = ${colors.brown}
+animation-charging-padding-left = 4
+
+[module/wireless-network]
+type = internal/network
+interface = wlo1
+interval = 3.0
+
+unknown-as-up = true
+accumulate-stats = true
+
+format-connected = <ramp-signal> <label-connected>
+label-connected =   %downspeed:7%
+label-connected-padding = 4
+label-connected-foreground = ${colors.foreground}
+label-connected-background = ${colors.purple}
+
+ramp-signal-0 = 
+ramp-signal-1 = 
+
+[module/powermenu]
+type = custom/menu
+
+expand-right = true
+
+format-spacing = 1
+
+label-open = 
+label-open-foreground = ${colors.foreground}
+label-close = 
+label-close-foreground = ${colors.foreground}
+
+
+menu-0-0 = 
+menu-0-0-exec = systemctl reboot
+menu-0-1 = 
+menu-0-1-exec = systemctl poweroff
+menu-0-2 = 
+menu-0-2-exec = systemctl suspend
+
+[module/mpd]
+type = internal/mpd
+
+host = 127.0.0.1
+port = 6600
+
+format-online = <label-song>
+icon-play = 
+icon-pause = 
+icon-stop = 
+icon-prev = 
+icon-next = 
+icon-seekb =  
+icon-seekf = 
+
+label-song-maxlen = 30
+label-song-ellipsis = true
