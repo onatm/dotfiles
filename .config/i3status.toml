@@ -1,0 +1,39 @@
+icons = "awesome"
+# theme = "solarized-dark"
+[theme]
+name = "solarized-dark"
+[theme.overrides]
+idle_bg = "#1d2021"
+idle_fg = "#d5c4a1"
+#info_bg = "#8ec07c"
+#info_fg = "#1d2021"
+#good_bg = "#b8bb26"
+#good_fg = "#1d2021"
+#warning_bg = "#fabd2f"
+#warning_fg = "#1d2021"
+#critical_bg = "#fb4934"
+#critical_fg = "#1d2021"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{Mup}%"
+format_swap = "{SUp}%"
+
+[[block]]
+block = "battery"
+interval = 10
+format = "{percentage}% {time}"
+
+[[block]]
+block = "sound"
+step_width = 3
+
+[[block]]
+block = "time"
+interval = 60
+format = "%a %d/%m %R"
