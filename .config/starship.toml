@@ -1,12 +1,14 @@
-# add_newline = false
-
-[character]
-symbol = "➜"
+[directory]
+fish_style_pwd_dir_length = 1
 
 [kubernetes]
-symbol = "⛵ "
-style = "dim green"
+format = """
+[⛵$context/$namespace](cyan bold)
+"""
 disabled = false
 
 [aws]
+disabled = true
+
+[gcloud]
 disabled = true
