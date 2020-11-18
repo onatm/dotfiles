@@ -3,7 +3,6 @@
   "extensions.ignoreRecommendations": false,
   "workbench.startupEditor": "newUntitledFile",
   "workbench.iconTheme": "vs-nomo-dark",
-  "workbench.colorTheme": "Gruvbox Dark (Hard)",
   "workbench.colorCustomizations": {
     "statusBar.background": "#005f5f",
     "statusBar.noFolderBackground": "#005f5f",
@@ -21,12 +20,16 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
+  "editor.largeFileOptimizations": false,
+  "editor.wordWrap": "on",
+  "diffEditor.ignoreTrimWhitespace": false,
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "terminal.integrated.shell.linux": "/usr/bin/fish",
   "terminal.integrated.shell.osx": "/usr/local/bin/fish",
   "terminal.integrated.fontSize": 14,
   "git.enableSmartCommit": true,
   "window.zoomLevel": 0,
-  "npm.enableScriptExplorer": true,
   "vim.statusBarColorControl": true,
   "vim.easymotion": true,
   "vim.sneak": true,
@@ -34,17 +37,6 @@
   "vim.useSystemClipboard": true,
   "vim.useCtrlKeys": true,
   "vim.hlsearch": true,
-  "vim.insertModeKeyBindings": [
-    {
-      "before": [
-        "j",
-        "j"
-      ],
-      "after": [
-        "<Esc>"
-      ]
-    }
-  ],
   "vim.normalModeKeyBindingsNonRecursive": [
     {
       "before": [
@@ -73,28 +65,29 @@
     "<C-a>": false,
     "<C-f>": false
   },
+  "javascript.updateImportsOnFileMove.enabled": "always",
   "typescript.format.enable": true,
   "typescript.updateImportsOnFileMove.enabled": "always",
-  "[typescript]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": false
-    }
+  "[vue]": {
+    "editor.formatOnSave": false
   },
-  "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": false
-    }
+  "[yaml]": {
+    "editor.defaultFormatter": "redhat.vscode-yaml"
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "eslint.alwaysShowStatus": true,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
+  "rust-analyzer.serverPath": "rust-analyzer",
   "go.useLanguageServer": true,
+  "eslint.alwaysShowStatus": true,
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "vue"
+  ],
   "vs-kubernetes": {
-    "vs-kubernetes.kubectl-path": "/Users/onat.mercan/.vs-kubernetes/tools/kubectl/kubectl",
-    "vs-kubernetes.minikube-path": "/Users/onat.mercan/.vs-kubernetes/tools/minikube/darwin-amd64/minikube",
-    "vs-kubernetes.helm-path": "/Users/onat.mercan/.vs-kubernetes/tools/helm/darwin-amd64/helm",
-    "vs-kubernetes.draft-path": "/Users/onat.mercan/.vs-kubernetes/tools/draft/darwin-amd64/draft"
+    "vs-kubernetes.kubectl-path": "/usr/local/bin/kubectl",
+    "vs-kubernetes.helm-path": "/usr/local/bin/helm",
   },
-  "editor.wordWrap": "on",
+  "editor.suggestSelection": "first",
+  "workbench.colorTheme": "One Dark Pro",
 }
