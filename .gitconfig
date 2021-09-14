@@ -1,15 +1,18 @@
 [user]
     name = onatm
     email = onatmercan@gmail.com
-	signingkey = D98AA098CC159C89
+    signingkey = D98AA098CC159C89
 [core]
     commentchar = $
     preloadindex = true
     fscache = true
-    autocrlf = input
-    safecrlf = true
     editor = nvim
-	excludesfile = $HOME/.gitignore_global
+    pager = delta
+    excludesfile = /Users/onat.mercan/.gitignore_global
+[gpg]
+    program = gpg
+[commit]
+    gpgsign = true
 [fetch]
     prune = true
 [rebase]
@@ -18,6 +21,17 @@
     default = simple
 [merge]
     tool = vimdiff
+[filter "lfs"]
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
+    process = git-lfs filter-process
+[interactive]
+    diffFilter = delta --color-only
+[delta]
+    features = side-by-side line-numbers decorations
+    whitespace-error-style = 22 reverse
+    syntax-theme = base16
 [alias]
     st = status
     co = checkout
@@ -25,3 +39,4 @@
     tail = commit --amend --no-edit
     graph = log --decorate --oneline --graph
     sf = show --pretty="" --name-only
+    shove = push --force-with-lease
