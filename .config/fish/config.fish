@@ -24,6 +24,13 @@ set PATH $GOPATH/bin $PATH
 set PATH $GOROOT/bin $PATH
 set PATH $HOME/.dapr $PATH
 
+# spawn
+set PATH $HOME/.spawnctl/bin $PATH
+
+# vault
+set -x VAULT_TOKEN s.u2zjTZuMXI39oamsWIC6OU9Q
+set -x VAULT_ADDR https://vault.red-gate.com
+
 # kubectl
 set -gx PATH $PATH $HOME/.krew/bin
 set -gx FISH_KUBECTL_COMPLETION_COMPLETE_CRDS 0
@@ -34,7 +41,9 @@ status --is-interactive; and source (rbenv init -|psub)
 # macOS specific
 set PATH /usr/local/opt/gnu-sed/libexec/gnubin $PATH
 set PATH /usr/local/opt/grep/libexec/gnubin $PATH
+set PATH /usr/local/opt/make/libexec/gnubin $PATH
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
 
 # aliases
 alias v='nvim'
