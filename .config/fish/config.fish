@@ -24,13 +24,6 @@ set PATH $GOPATH/bin $PATH
 set PATH $GOROOT/bin $PATH
 set PATH $HOME/.dapr $PATH
 
-# spawn
-set PATH $HOME/.spawnctl/bin $PATH
-
-# vault
-set -x VAULT_TOKEN s.u2zjTZuMXI39oamsWIC6OU9Q
-set -x VAULT_ADDR https://vault.red-gate.com
-
 # kubectl
 set -gx PATH $PATH $HOME/.krew/bin
 set -gx FISH_KUBECTL_COMPLETION_COMPLETE_CRDS 0
