@@ -1,24 +1,22 @@
 {
-  "telemetry.enableTelemetry": false,
-  "extensions.ignoreRecommendations": false,
-  "workbench.startupEditor": "newUntitledFile",
+  "telemetry.telemetryLevel": "off",
+  "extensions.ignoreRecommendations": true,
+  "workbench.colorTheme": "One Dark Pro Darker",
   "workbench.iconTheme": "vs-nomo-dark",
-  "workbench.colorTheme": "One Dark Pro",
-  "emmet.showExpandedAbbreviation": "inMarkupAndStylesheetFilesOnly",
+  "explorer.confirmDelete": false,
+  "explorer.confirmDragAndDrop": false,
   "editor.formatOnSave": true,
   "editor.insertSpaces": true,
   "editor.tabSize": 2,
   "editor.fontSize": 14,
   "editor.renderWhitespace": "boundary",
-  "editor.renderIndentGuides": true,
   "editor.codeLens": true,
   "editor.largeFileOptimizations": false,
   "editor.wordWrap": "on",
   "editor.suggestSelection": "first",
+  "editor.inlineSuggest.enabled": true,
   "diffEditor.ignoreTrimWhitespace": false,
   "diffEditor.maxComputationTime": 0,
-  "explorer.confirmDelete": false,
-  "explorer.confirmDragAndDrop": false,
   "terminal.integrated.fontSize": 14,
   "git.enableSmartCommit": true,
   "vim.enableNeovim": true,
@@ -56,43 +54,10 @@
   "vim.handleKeys": {
     "<C-f>": false
   },
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "typescript.format.enable": true,
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "[yaml]": {
-    "editor.defaultFormatter": "redhat.vscode-yaml"
-  },
-  "go.useLanguageServer": true,
-  "go.toolsManagement.autoUpdate": true,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "camelk.integrations.runtimeVersion": "1.4.0",
-  "redhat.telemetry.enabled": false,
-  "files.exclude": {
-    "**/.classpath": true,
-    "**/.project": true,
-    "**/.settings": true,
-    "**/.factorypath": true
-  },
-  "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
-  },
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
-  },
-  "editor.inlineSuggest.enabled": true,
-  "notebook.cellToolbarLocation": {
-    "default": "right",
-    "jupyter-notebook": "left"
-  },
-  "github.copilot.enable": {
-    "*": false,
-    "yaml": false,
-    "plaintext": false,
-    "markdown": false
   },
 }
