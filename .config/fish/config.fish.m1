@@ -1,0 +1,50 @@
+# brew m1
+set PATH /opt/homebrew/bin $PATH
+
+eval (starship init fish)
+
+fish_vi_key_bindings
+
+# Base16 Shell
+if status --is-interactive
+    set BASE16_SHELL "$HOME/.config/base16-shell/"
+    source "$BASE16_SHELL/profile_helper.fish"
+end
+
+set -gx EDITOR nvim
+set -x GPG_TTY (tty)
+
+set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+set -g fish_user_paths "/opt/homebrew/opt/node@16/bin" $fish_user_paths
+
+# node@16
+set -gx LDFLAGS "-L/opt/homebrew/opt/node@16/lib"
+set -gx CPPFLAGS "-I/opt/homebrew/opt/node@16/include"
+
+# bat
+set -x BAT_THEME base16
+
+# rust
+set PATH $HOME/.cargo/bin $PATH
+
+# go
+set -x GOPATH $HOME/dev/go
+set -x GOROOT /opt/homebrew/opt/go/libexec 
+set -x GO111MODULE on
+set PATH $GOPATH/bin $PATH
+set PATH $GOROOT/bin $PATH
+
+# kubectl
+set -gx PATH $PATH $HOME/.krew/bin
+set -gx FISH_KUBECTL_COMPLETION_COMPLETE_CRDS 0
+
+# aliases
+alias v='nvim'
+alias ls='exa'
+alias k='kubectl'
+alias kn='k ns'
+alias kall='k allctx'
+
+# git aliases
+alias gg='git graph'
