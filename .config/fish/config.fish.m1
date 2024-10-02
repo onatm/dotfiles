@@ -2,6 +2,14 @@
 set PATH /opt/homebrew/bin $PATH
 
 eval (starship init fish)
+mcfly init fish | source
+
+if test -d ~/.basher
+  set basher ~/.basher/bin
+end
+
+set -gx PATH $basher $PATH
+status --is-interactive; and . (basher init - fish|psub)
 
 fish_vi_key_bindings
 
@@ -18,10 +26,6 @@ set -g fish_user_paths "/opt/homebrew/sbin" $fish_user_paths
 set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
 set -g fish_user_paths "/opt/homebrew/opt/node@16/bin" $fish_user_paths
 
-# node@16
-set -gx LDFLAGS "-L/opt/homebrew/opt/node@16/lib"
-set -gx CPPFLAGS "-I/opt/homebrew/opt/node@16/include"
-
 # bat
 set -x BAT_THEME base16
 
@@ -35,9 +39,14 @@ set -x GO111MODULE on
 set PATH $GOPATH/bin $PATH
 set PATH $GOROOT/bin $PATH
 
+set -g fish_user_paths $HOME/.donet/tools $fish_user_paths
+
 # kubectl
 set -gx PATH $PATH $HOME/.krew/bin
 set -gx FISH_KUBECTL_COMPLETION_COMPLETE_CRDS 0
+
+# mcfly
+set -gx MCFLY_KEY_SCHEME vim
 
 # aliases
 alias v='nvim'
@@ -45,6 +54,10 @@ alias ls='exa'
 alias k='kubectl'
 alias kn='k ns'
 alias kall='k allctx'
+
+# docker aliases
+alias dcu='docker compose up -d'
+alias dcd='docker compose down'
 
 # git aliases
 alias gg='git graph'
