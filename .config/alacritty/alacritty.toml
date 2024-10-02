@@ -1,0 +1,106 @@
+live_config_reload = true
+
+[env]
+TERM = "xterm-256color"
+
+[shell]
+args = ["-l", "-c", "tmux attach || tmux"]
+program = "/opt/homebrew/bin/fish"
+# program = "/usr/local/bin/fish"
+
+[debug]
+log_level = "Warn"
+persistent_logging = false
+print_events = false
+render_timer = false
+
+[window]
+decorations = "full"
+dynamic_padding = false
+dynamic_title = true
+opacity = 1
+startup_mode = "Windowed"
+
+[window.dimensions]
+columns = 160
+lines = 48
+
+[window.padding]
+x = 4
+y = 2
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.bright]
+black = "0x969896"
+blue = "0xb4b7b4"
+cyan = "0xa3685a"
+green = "0x282a2e"
+magenta = "0xe0e0e0"
+red = "0xde935f"
+white = "0xffffff"
+yellow = "0x373b41"
+
+[colors.cursor]
+cursor = "0xc5c8c6"
+text = "0x1d1f21"
+
+[colors.normal]
+black = "0x1d1f21"
+blue = "0x81a2be"
+cyan = "0x8abeb7"
+green = "0xb5bd68"
+magenta = "0xb294bb"
+red = "0xcc6666"
+white = "0xc5c8c6"
+yellow = "0xf0c674"
+
+[colors.primary]
+background = "0x1d1f21"
+foreground = "0xc5c8c6"
+
+[cursor]
+style = "Beam"
+unfocused_hollow = true
+
+[font]
+size = 14.0
+
+[font.normal]
+family = "Droid Sans Mono Slashed for Powerline"
+style = "Regular"
+
+[font.bold]
+family = "Droid Sans Mono Slashed for Powerline"
+
+[font.italic]
+family = "Droid Sans Mono Slashed for Powerline"
+
+[font.offset]
+x = 0
+y = 0
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[mouse]
+hide_when_typing = false
+
+[[mouse.bindings]]
+action = "PasteSelection"
+mouse = "Middle"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = false
+semantic_escape_chars = ",│`|:\"' ()[]{}<>"
+
+[keyboard]
+bindings = [
+{ key = "F11", action = "ToggleFullscreen" }
+]
