@@ -23,7 +23,7 @@ set smartcase
 set gdefault
 
 highlight clear SignColumn
-set signcolumn="yes"
+set signcolumn=yes:1
 
 call plug#begin('~/.local/share/nvim/plugged')
  Plug 'chriskempson/base16-vim'
